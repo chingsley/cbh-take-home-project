@@ -1,4 +1,4 @@
-import { deterministicPartitionKey } from "./dpk";
+const { deterministicPartitionKey } = require("./dpk");
 
 describe('npm install --save-dev jest', () => {
   it('returns the TRIVIAL_PARTITION_KEY when event is undefined', () => {
@@ -11,13 +11,13 @@ describe('npm install --save-dev jest', () => {
       partitionKey: 'A1223B12'
     };
     const candidate = deterministicPartitionKey(event);
-    expect(candidate).toBeLessThan(256);
+    expect(candidate.length).toBeLessThan(256);
   });
 
   it('creates hash using the event data when partitionKey does not exist', () => {
     const event = new Event("hash");
     const candidate = deterministicPartitionKey(event);
-    expect(candidate).toBeLessThan(256);
+    expect(candidate.length).toBeLessThan(256);
   });
 
   it('re-hashes the result if has length greater than 256', () => {
@@ -25,6 +25,6 @@ describe('npm install --save-dev jest', () => {
       partitionKey: 'A1223B12A1223B12A1223B12A1223B12A1223B12'
     };
     const candidate = deterministicPartitionKey(event);
-    expect(candidate).toBeLessThan(256);
+    expect(candidate.length).toBeLessThan(256);
   });
 });

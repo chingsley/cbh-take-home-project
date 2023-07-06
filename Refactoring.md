@@ -14,4 +14,4 @@ You will be graded on the exhaustiveness and quality of your unit tests, the dep
 
 1.  It removes all nested 'if' conditions in the un-refactored code. This is usually a good idea when simplifying code. It achieves this by first checking the if the event exists. If not it immediately returns the candidate as the 'TRIVIAL_PARTITION_KEY'
 
-2.  It uses modern Ecmascript syntax which is always easier to read.
+2.  With the refactor, the candidate variable is initialized to the value of the 'TRIVIAL_PARTITION_KEY'; having initialized values helps make the garbage collection more efficient.
